@@ -16,12 +16,12 @@ server.use(express.json());
 // routes-------------------------------------
 server.use('/api/auth', authRouter)
 
-async function start() {
+function start() {
     try {
-        await server.listen(PORT, () => {
+        server.listen(PORT, () => {
             console.log(`server work on port ${PORT}`);
         }),
-        await db.once('open', () => {
+        db.once('open', () => {
             console.log(`dataBase is connect`);
         })
     } catch (error) {
